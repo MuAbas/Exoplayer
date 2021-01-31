@@ -38,7 +38,7 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
     // For youtube Url Extractor
-    implementation 'com.github.HaarigerHarald:android-youtubeExtractor:v1.7.0'
+    implementation 'com.github.HaarigerHarald:android-youtubeExtractor:master-SNAPSHOT'
     // ExoPlayer
     implementation 'com.google.android.exoplayer:exoplayer:2.7.3'
 }
