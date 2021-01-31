@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import android.annotation.SuppressLint;
+import android.util.Log;
 import android.util.SparseArray;
 import com.google.android.exoplayer2.ui.PlayerView;
 import at.huber.youtubeExtractor.VideoMeta;
@@ -13,9 +14,7 @@ import at.huber.youtubeExtractor.YtFile;
 
 public class MainActivity extends AppCompatActivity {
     // Replace video id with your video Id
-    private String YOUTUBE_VIDEO_ID = "pzylyaGh9Zk";
-    private String BASE_URL = "https://www.youtube.com";
-    private String mYoutubeLink = BASE_URL + "/watch?v=" + YOUTUBE_VIDEO_ID;
+    private String mYoutubeLink = "https://www.youtube.com/watch?v=pzylyaGh9Zk";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
         extractYoutubeUrl();
     }
     private void extractYoutubeUrl() {
-        @SuppressLint("StaticFieldLeak") YouTubeExtractor mExtractor = new YouTubeExtractor(this) {
+        @SuppressLint("StaticFieldLeak")
+        YouTubeExtractor mExtractor = new YouTubeExtractor(this) {
             @Override
             protected void onExtractionComplete(SparseArray<YtFile> sparseArray, VideoMeta videoMeta) {
                 if (sparseArray != null) {
-                    playVideo(sparseArray.get(17).getUrl());
+                    int key = sparseArray.keyAt(0);
+                    playVideo(sparseArray.get(key).getUrl());
                 }
             }
         };
